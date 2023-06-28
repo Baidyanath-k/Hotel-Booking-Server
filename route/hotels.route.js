@@ -2,6 +2,9 @@ const express = require("express");
 const hotelController = require("../controller/hotels.controllers");
 const router = express.Router();
 
+
+
+
 router
   .route("/")
   .post(hotelController.createHotel)

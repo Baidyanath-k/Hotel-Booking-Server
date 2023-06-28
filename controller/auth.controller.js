@@ -46,6 +46,7 @@ exports.login = async (req, res, next) => {
     if (!isPasswordCorrect)
       return next(createError(400, "wrong password and username"));
 
+      // token
     const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
       process.env.jwt
@@ -61,6 +62,7 @@ exports.login = async (req, res, next) => {
       ...otherDetails
     } = user._doc;
 
+    // cookie and token set
     res
       .cookie("access_token", token, {
         httpOnly: true,
