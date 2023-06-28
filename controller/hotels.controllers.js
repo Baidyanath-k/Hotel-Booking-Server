@@ -36,6 +36,14 @@ exports.hotelGetSpecificData = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await Hotel.findOne({ _id: id });
+
+    if(!result) {
+      return res.status(400).json({
+        status: "un-successful",
+        message: "This id hotel can't find",
+      });
+    }
+
     res.status(200).json({
       status: "successful",
       message: "Hotel specific data get successful",
